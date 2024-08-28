@@ -3,10 +3,23 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "start:dev": "next dev",
     "build": "next build",
+    "build:clean": "npm run code:ci && next build",
     "start": "next start",
-    "lint": "next lint"
+    "start:docker": "npm run start",
+    "lint": "next lint",
+    "lint:staged": "eslint --fix --cache **/*.{js,jsx,ts,tsx}",
+    "format:verify": "prettier --check --ignore-path .gitignore ./src/**/*.{js,jsx,ts,tsx}",
+    "format:fix": "prettier --write --ignore-path .gitignore ./src/**/*.{js,jsx,ts,tsx}",
+    "husky:prepare": "cd ../ && husky install",
+    "test": "jest --passWithNoTests --color",
+    "test:coverage": "jest --coverage --passWithNoTests --color",
+    "test:watch": "jest --watchAll --coverage --passWithNoTests --color",
+    "test:staged": "jest --passWithNoTests --color --findRelatedTests",
+    "test:E2E": "cypress run",
+    "test:cypress": "cypress open",
+    "code:ci": "npm run format:fix && npm run lint && npm run test:coverage"
   },
   "dependencies": {
     "next": "14.2.7",
