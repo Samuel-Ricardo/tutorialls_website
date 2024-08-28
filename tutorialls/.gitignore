@@ -1,5 +1,12 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+# DOCKER
+.docker
+
+# ENV 
+.env 
+.env.local
+
 # dependencies
 /node_modules
 node_modules
