@@ -1,4 +1,5 @@
 import { MODULE } from '@/@module/app.registry';
+import { IDecodeUserDTO } from '@/@module/domain/DTO/user/decode.dto';
 import { ILoginUserDTO } from '@/@module/domain/DTO/user/login.dto';
 import { ISignupUserDTO } from '@/@module/domain/DTO/user/signup.dto';
 import type { IAuthService } from '@/@module/domain/service/user/auth.service';
@@ -17,5 +18,9 @@ export class AuthController {
 
   async login(user: ILoginUserDTO) {
     return { token: await this.authService.login(user) };
+  }
+
+  async decode(user: IDecodeUserDTO) {
+    return { user: await this.authService.decode(user) };
   }
 }
