@@ -5,9 +5,9 @@
   "scripts": {
     "start:dev": "next dev",
     "build": "next build",
-    "build:clean": "npm run code:ci && next build",
+    "build:clean": "npm run code:ci && npm run build",
     "start": "next start",
-    "start:docker": "npm run start",
+    "start:docker": "npm run build && npm run start",
     "lint": "next lint",
     "lint:staged": "eslint --fix --cache **/*.{js,jsx,ts,tsx}",
     "format:verify": "prettier --check --ignore-path .gitignore ./src/**/*.{js,jsx,ts,tsx}",
