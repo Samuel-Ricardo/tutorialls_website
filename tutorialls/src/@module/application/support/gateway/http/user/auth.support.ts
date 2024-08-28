@@ -6,5 +6,5 @@ import { injectable } from 'inversify';
 @injectable()
 export abstract class AxiosHttpAuthGatewaySupport {
   @injectGateway(MODULE.APPLICATION.GATEWAY.HTTP.AXIOS.AUTH)
-  private readonly gateway!: IAuthGateway;
+  protected readonly gateway!: IAuthGateway;
 }
