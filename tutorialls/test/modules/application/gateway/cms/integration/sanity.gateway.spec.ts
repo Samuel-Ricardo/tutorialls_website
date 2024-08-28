@@ -7,7 +7,7 @@ import 'reflect-metadata';
 import { MODULES } from '@/@module/app.facotry';
 import { ICMSGateway } from '@/@module/infra/engine/gateway/cms/cms.gateway';
 import { SanityCMSGateway } from '@/@module/application/gateway/cms/sanity/sanity.gateway';
-import { EXPECTED_SANITY_PARAGRAPH } from '../../../../data/sanity.data';
+import { EXPECTED_SANITY_PARAGRAPH } from '../../../../../data/sanity.data';
 
 describe('[INTEGRATION] | GATEWAY => [SANITY] | [CMS]', () => {
   let gateway: ICMSGateway;
