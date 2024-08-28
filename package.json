@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "inversify": "^6.0.2"
+  }
+}
