@@ -3,7 +3,6 @@
     "prepare": "husky install"
   },
   "devDependencies": {
-    "@types/jest": "^29.5.12",
     "husky": "^9.1.5"
   }
 }
