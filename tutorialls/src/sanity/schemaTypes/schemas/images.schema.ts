@@ -1,8 +1,8 @@
 import { SchemaTypeDefinition } from 'sanity';
 
 export const IMAGE_SCHEMA: SchemaTypeDefinition = {
-  name: 'image',
-  title: 'Image',
+  name: 'images',
+  title: 'Images',
   type: 'document',
   fields: [
     {
@@ -12,8 +12,8 @@ export const IMAGE_SCHEMA: SchemaTypeDefinition = {
       validation: Rule => Rule.required(),
     },
     {
-      name: 'image',
-      title: 'Image',
+      name: 'imageD',
+      title: 'ImageD',
       type: 'image',
       options: {
         hotspot: true,

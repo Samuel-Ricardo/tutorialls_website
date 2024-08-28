@@ -1,9 +1,9 @@
 import { SchemaTypeDefinition } from 'sanity';
 
 export const PARAGRAPH_SCHEMA: SchemaTypeDefinition = {
-  name: 'paragraph',
-  title: 'Paragraph',
-  type: 'object',
+  name: 'paragraphs',
+  title: 'Paragraphs',
+  type: 'document',
   fields: [
     {
       name: 'identifier',
