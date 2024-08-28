@@ -23,6 +23,7 @@ export class DecodeUserUseCase implements IDecodeUserUseCase {
       id: result.id,
       email: result.email,
       password: result.password,
+      authToken: token,
     };
   }
 }
