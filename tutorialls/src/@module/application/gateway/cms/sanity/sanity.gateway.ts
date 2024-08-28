@@ -18,7 +18,10 @@ export class SanityCMSGateway implements ICMSGateway {
     console.log({ result });
     return result.body;
   }
-  async getImage(DTO: IGetFromCMSDTO) {
-    return 'image';
+  async getImage({ id }: IGetFromCMSDTO) {
+    const query = `*[_type == "imageWithIdentifier" && identifier == $identifier][0]{ "imageUrl": image.asset->url }`;
+    const result = await this.engine.fetch(query, { identifier: id });
+    console.log({ result });
+    return result.imageUrl;
   }
 }
