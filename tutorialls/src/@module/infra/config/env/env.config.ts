@@ -3,6 +3,9 @@ export const ENV = {
   API: {
     URL: process.env.NEXT_PUBLIC_API_URL || 'http://api:3001',
   },
+  JWT: {
+    SECRET: process.env.NEXT_PUBLIC_JWT_SECRET || 'secret',
+  },
   ENCRYPTION: {
     KEY: process.env.NEXT_PUBLIC_ENCRYPTION_KEY || 'secret',
     ALGORITHM: process.env.NEXT_PUBLIC_ENCRYPTION_ALGORITHM || 'aes-256-ctr',

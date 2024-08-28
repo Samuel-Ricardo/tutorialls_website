@@ -9,4 +9,16 @@ export const CONFIG_REGISTRY = {
     ALGORITHM: Symbol.for('MODULE::INFRA::CONFIG::ENCRYPTION::ALGORITHM'),
     BREAKPOINT: Symbol.for('MODULE::INFRA::CONFIG::ENCRYPTION::BREAKPOINT'),
   },
+  JWT: {
+    SECRET: Symbol.for('MODULE::INFRA::CONFIG::JWT::SECRET'),
+  },
+  SANITY: {
+    PROJECT: {
+      ID: Symbol.for('MODULE::INFRA::CONFIG::SANITY::PROJECT::ID'),
+    },
+    DATASET: Symbol.for('MODULE::INFRA::CONFIG::SANITY::DATASET'),
+    USE: {
+      CDN: Symbol.for('MODULE::INFRA::CONFIG::SANITY::USE::CDN'),
+    },
+  },
 };
