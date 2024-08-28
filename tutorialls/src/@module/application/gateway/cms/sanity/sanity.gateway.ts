@@ -12,14 +12,14 @@ export class SanityCMSGateway implements ICMSGateway {
   ) {}
 
   async getString({ id }: IGetFromCMSDTO) {
-    const query = `*[_type == "paragraph" && identifier == $identifier][0]{ body }`;
+    const query = `*[_type == "paragraphs" && identifier == $identifier][0]{ body }`;
     const params = { identifier: id };
     const result = await this.engine.fetch(query, params);
     console.log({ result });
     return result.body;
   }
   async getImage({ id }: IGetFromCMSDTO) {
-    const query = `*[_type == "imageWithIdentifier" && identifier == $identifier][0]{ "imageUrl": image.asset->url }`;
+    const query = `*[_type == "images" && identifier == $identifier][0]{ "imageUrl": imageD.asset->url }`;
     const result = await this.engine.fetch(query, { identifier: id });
     console.log({ result });
     return result.imageUrl;
