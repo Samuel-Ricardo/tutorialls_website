@@ -28,7 +28,10 @@
     "next": "14.2.7",
     "react": "^18",
     "react-dom": "^18",
-    "react-hook-form": "^7.53.0"
+    "react-hook-form": "^7.53.0",
+    "reflect-metadata": "^0.2.2",
+    "swr": "^2.2.5",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/jest": "^29.5.12",
