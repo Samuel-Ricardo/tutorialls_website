@@ -31,7 +31,8 @@
     "react-hook-form": "^7.53.0",
     "reflect-metadata": "^0.2.2",
     "swr": "^2.2.5",
-    "zod": "^3.23.8"
+    "zod": "^3.23.8",
+    "zustand": "^4.5.5"
   },
   "devDependencies": {
     "@types/jest": "^29.5.12",
