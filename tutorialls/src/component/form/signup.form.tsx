@@ -1,40 +1,41 @@
 'use client';
 
 import { useForm } from 'react-hook-form';
-import { useRouter } from 'next/navigation';
-import { ILoginForm } from '@/validation/zod/form/login.schema';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { loginFormSchema } from '@/validation/zod/form/login.schema';
 import { useCallback } from 'react';
-import { useAuth } from '@/hook/auth/login.hook';
 import { FormField } from './field/field.component';
 import { Button } from '../button/button.component';
+import { useRegister } from '@/hook/auth/signup.hook';
+import {
+  ISignupForm,
+  signupFormSchema,
+} from '@/validation/zod/form/signup.schema';
+import useSignupModalStore from '@/store/modal/signup.store';
 
-export const LoginForm = () => {
-  const router = useRouter();
-  const { loginAsync } = useAuth();
+export const SignupForm = () => {
+  const { signupAsync } = useRegister();
+  const { closeModal } = useSignupModalStore();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<ILoginForm>({
-    resolver: zodResolver(loginFormSchema),
+  } = useForm<ISignupForm>({
+    resolver: zodResolver(signupFormSchema),
   });
 
   const submit = useCallback(
     () =>
       handleSubmit(async data => {
-        const { token } = await loginAsync(data);
-        localStorage.setItem('AUTH_TOKEN', token);
-        router.push('/tutorials');
+        await signupAsync(data);
+        closeModal();
       }),
-    [handleSubmit, loginAsync, router],
+    [handleSubmit, signupAsync, closeModal],
   );
 
   return (
-    <form onSubmit={submit()} className="flex flex-col gap-4 my-10">
+    <form onSubmit={submit()} className="flex flex-col gap-8 my-10 w-full">
       <FormField
         label={{
           id: 'lbl_email',
@@ -57,7 +58,7 @@ export const LoginForm = () => {
         error={errors.password?.message}
       />
 
-      <Button id="btn_login" label="Login" type="submit" />
+      <Button id="btn_signup" label="signup" type="submit" />
     </form>
   );
 };
