@@ -1,9 +1,14 @@
 import { IButtonProps } from '@/@type/props/component/button/button.props';
 import { LazyParagraph } from '../lazy/paragraph.component';
 
-export const Button = ({ id, label, onClick }: IButtonProps) => {
+export const Button = ({ id, label, onClick, type }: IButtonProps) => {
   return (
-    <button id={id} onClick={onClick} className="bg-[#76ff02] text-black">
+    <button
+      id={id}
+      type={type || 'button'}
+      onClick={onClick}
+      className="bg-[#76ff02] text-black hover:bg-emerald-400 hover:text-white text-center p-2 rounded-lg"
+    >
       <LazyParagraph id={id} defaultValue={label} />
     </button>
   );
