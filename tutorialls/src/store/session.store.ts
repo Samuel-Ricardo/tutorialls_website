@@ -1,3 +1,5 @@
+'use client';
+
 import { MODULES } from '@/@module/app.facotry';
 import { IUserDTO } from '@/@module/domain/DTO/user.dto';
 import toast from 'react-hot-toast';
@@ -12,26 +14,25 @@ interface ISessionState {
 
 const useSessionStore = create<ISessionState>(set => ({
   user: undefined,
-  isAuthenticated: () => !!localStorage.getItem('AUTH_TOKEN'),
+  isAuthenticated: () => !!localStorage?.getItem('AUTH_TOKEN'),
   refresh: async () => {
     try {
-      const token = localStorage.getItem('AUTH_TOKEN') || '';
+      const token = localStorage?.getItem('AUTH_TOKEN') || '';
       const { user } = await MODULES.APPLICATION.CONTROLLER.AUTH().decode({
         token,
       });
 
       set({ user });
     } catch (e) {
-      console.error(e);
       set({ user: undefined });
-      localStorage.removeItem('AUTH_TOKEN');
+      localStorage?.removeItem('AUTH_TOKEN');
       toast.dismiss();
       toast.error('Session expired. Please login again.');
     }
   },
   logout: () => {
     set({ user: undefined });
-    localStorage.removeItem('AUTH_TOKEN');
+    localStorage?.removeItem('AUTH_TOKEN');
   },
 }));
 
