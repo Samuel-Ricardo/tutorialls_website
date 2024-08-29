@@ -1,5 +1,5 @@
-import { IError } from 'src/@types/internal/lib/error.type';
-import { IErrorDTO } from 'src/domain/DTO/error/app.dto';
+import { IErrorDTO } from '@/@module/domain/DTO/error/app.dto';
+import { IError } from '@/@type/internal/lib/error.type';
 
 export class AppError extends Error implements IError {
   constructor(

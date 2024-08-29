@@ -25,6 +25,7 @@ const useSessionStore = create<ISessionState>(set => ({
       console.error(e);
       set({ user: undefined });
       localStorage.removeItem('AUTH_TOKEN');
+      toast.dismiss();
       toast.error('Session expired. Please login again.');
     }
   },
