@@ -34,7 +34,7 @@ export const LoginForm = () => {
   );
 
   return (
-    <form onSubmit={submit()} className="flex flex-col gap-4">
+    <form onSubmit={submit()} className="flex flex-col gap-4 my-10">
       <FormField
         label={{
           id: 'lbl_email',
