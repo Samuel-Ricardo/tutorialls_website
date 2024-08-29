@@ -18,4 +18,22 @@ export const CONFIG_FACTORY = {
       CONFIG_REGISTRY.ENCRYPTION.BREAKPOINT,
     ),
   },
+  JWT: {
+    SECRET: CONFIG_MODULE.get<string | undefined>(CONFIG_REGISTRY.JWT.SECRET),
+  },
+  SANITY: {
+    PROJECT: {
+      ID: CONFIG_MODULE.get<string | undefined>(
+        CONFIG_REGISTRY.SANITY.PROJECT.ID,
+      ),
+    },
+    DATASET: CONFIG_MODULE.get<string | undefined>(
+      CONFIG_REGISTRY.SANITY.DATASET,
+    ),
+    USE: {
+      CDN: CONFIG_MODULE.get<boolean | undefined>(
+        CONFIG_REGISTRY.SANITY.USE.CDN,
+      ),
+    },
+  },
 };
