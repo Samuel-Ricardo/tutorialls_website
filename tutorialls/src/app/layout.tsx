@@ -1,8 +1,13 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Roboto } from 'next/font/google';
 import './globals.css';
+import TanStackQueryProvider from '@/provider/query/tanstack.provider';
+import { Toaster } from 'react-hot-toast';
 
-const inter = Inter({ subsets: ['latin'] });
+const font = Roboto({
+  subsets: ['latin'],
+  weight: '400',
+});
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -16,7 +21,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={font.className}>
+        <TanStackQueryProvider>
+          {children} <Toaster position="bottom-center" reverseOrder={false} />
+        </TanStackQueryProvider>
+      </body>
     </html>
   );
 }
