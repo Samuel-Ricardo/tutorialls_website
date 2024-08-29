@@ -29,6 +29,7 @@
     "axios": "^1.7.5",
     "inversify": "^6.0.2",
     "inversify-inject-decorators": "^3.1.0",
+    "jsonwebtoken": "^9.0.2",
     "next": "14.2.7",
     "next-sanity": "^9.4.7",
     "react": "^18",
@@ -44,6 +45,7 @@
   },
   "devDependencies": {
     "@types/jest": "^29.5.12",
+    "@types/jsonwebtoken": "^9.0.6",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
