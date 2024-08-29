@@ -1,4 +1,6 @@
+import { ToggleSignupModalButton } from '@/component/button/modal/signup.component';
 import { LoginForm } from '@/component/form/login.form';
+import { SignupModal } from '@/component/modal/signup.modal';
 
 export const LoginPage = () => {
   return (
@@ -8,6 +10,9 @@ export const LoginPage = () => {
       </h1>
 
       <LoginForm />
+      <ToggleSignupModalButton />
+
+      <SignupModal />
     </main>
   );
 };
