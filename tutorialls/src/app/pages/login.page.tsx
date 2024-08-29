@@ -1,6 +1,6 @@
 import { ToggleSignupModalButton } from '@/component/button/modal/signup.component';
 import { LoginForm } from '@/component/form/login.form';
-import { SignupModal } from '@/component/modal/signup.modal';
+import { SignupModal } from '@/component/modal/form/signup.modal';
 import { H1 } from '@/component/typography/h1.component';
 
 export const LoginPage = () => {
