@@ -7,6 +7,7 @@ interface ISessionState {
   user: IUserDTO | undefined;
   isAuthenticated: () => boolean;
   refresh: () => void;
+  logout: () => void;
 }
 
 const useSessionStore = create<ISessionState>(set => ({
@@ -26,6 +27,10 @@ const useSessionStore = create<ISessionState>(set => ({
       localStorage.removeItem('AUTH_TOKEN');
       toast.error('Session expired. Please login again.');
     }
+  },
+  logout: () => {
+    set({ user: undefined });
+    localStorage.removeItem('AUTH_TOKEN');
   },
 }));
 
