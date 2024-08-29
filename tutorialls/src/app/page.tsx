@@ -14,7 +14,7 @@ export default function Home() {
         src="https://images.pexels.com/photos/733852/pexels-photo-733852.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         alt="home"
         width={600}
-        height={600}
+        height={300}
         className="mb-16 rounded-3xl"
       />
 
