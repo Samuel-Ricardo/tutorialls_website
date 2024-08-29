@@ -1,7 +1,7 @@
 export const ENV = {
   ...process.env,
   API: {
-    URL: process.env.NEXT_PUBLIC_API_URL || 'http://api:3001',
+    URL: process.env.NEXT_PUBLIC_API_URL || 'http://api:3000',
   },
   JWT: {
     SECRET: process.env.NEXT_PUBLIC_JWT_SECRET || 'secret',

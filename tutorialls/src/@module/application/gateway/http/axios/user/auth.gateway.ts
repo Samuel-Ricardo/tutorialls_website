@@ -14,7 +14,7 @@ export class AxiosHttpAuthGateway implements IAuthGateway {
   @injectConfig(MODULE.INFRA.CONFIG.API.URL)
   private readonly baseApiUrl!: string;
 
-  private readonly api_url = `${this.baseApiUrl}/auth`;
+  private readonly api_url = `${this.baseApiUrl}/user`;
 
   async signup(user: ISignupUserDTO) {
     return (
