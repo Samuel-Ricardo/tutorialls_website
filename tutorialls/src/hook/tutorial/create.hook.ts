@@ -13,7 +13,7 @@ export const useTutorialCreation = () => {
     data,
     isPending,
     error,
-  } = useMutation<ICreateTutorialDTO, any, ITutorialDTO>({
+  } = useMutation<ITutorialDTO, any, ICreateTutorialDTO>({
     mutationFn: async DTO =>
       await toast.promise(result.create(DTO), {
         loading: `Creating tutorial... 🛂`,
