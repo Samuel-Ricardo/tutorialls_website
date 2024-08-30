@@ -1,7 +1,9 @@
 import { IDeleteTutorialUseCase } from '@/@module/domain/use_case/tutorials/delete.use_case';
 import { AxiosHttpTutorialGatewaySupport } from '../../support/gateway/http/tutorial/tutorial.support';
 import { IDeleteTutorialDTO } from '@/tutorial/delete.dto';
+import { injectable } from 'inversify';
 
+@injectable()
 export class DeleteTutorialUseCase
   extends AxiosHttpTutorialGatewaySupport
   implements IDeleteTutorialUseCase

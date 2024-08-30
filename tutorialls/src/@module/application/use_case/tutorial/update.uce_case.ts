@@ -1,7 +1,9 @@
 import { IUpdateTutorialUseCase } from '@/@module/domain/use_case/tutorials/update.use_case';
 import { IUpdateTutorialDTO } from '@/tutorial/update.dto';
 import { AxiosHttpTutorialGatewaySupport } from '../../support/gateway/http/tutorial/tutorial.support';
+import { injectable } from 'inversify';
 
+@injectable()
 export class UpdateTutorialUseCase
   extends AxiosHttpTutorialGatewaySupport
   implements IUpdateTutorialUseCase
