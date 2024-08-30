@@ -11,42 +11,90 @@ import { IFilterTutorialsByAuthorDTO } from '@/tutorial/filter/by/author.dto';
 import { IFilterTutorialsByContentDTO } from '@/tutorial/filter/by/content.dto';
 import { IFilterTutorialsByTitleDTO } from '@/tutorial/filter/by/title.dto';
 import { IListAllTutorialsDTO } from '@/tutorial/list/all.dto';
+import { ITutorialDTO } from '@/tutorial/tutorial.dto';
 import { IUpdateTutorialDTO } from '@/tutorial/update.dto';
 import { injectable } from 'inversify';
 
 @injectable()
 export class AxiosHttpTutorialGateway implements ITutorialGateway {
-  create(tutorial: ICreateTutorialDTO): Promise<Tutorial> {
-    throw new Error('Method not implemented.');
-  }
-  update(tutorial: IUpdateTutorialDTO): Promise<Tutorial> {
-    throw new Error('Method not implemented.');
-  }
-  delete(tutorial: IDeleteTutorialDTO): Promise<boolean> {
-    throw new Error('Method not implemented.');
-  }
-  listAll(DTO: IListAllTutorialsDTO): Promise<IPaginationOutputDTO<Tutorial>> {
-    throw new Error('Method not implemented.');
-  }
-  findByTitle(
-    DTO: IFilterTutorialsByTitleDTO,
-  ): Promise<IPaginationOutputDTO<Tutorial>> {
-    throw new Error('Method not implemented.');
-  }
-  findByAuthor(
-    DTO: IFilterTutorialsByAuthorDTO,
-  ): Promise<IPaginationOutputDTO<Tutorial>> {
-    throw new Error('Method not implemented.');
-  }
-  findByKeywordInContent(
-    DTO: IFilterTutorialsByContentDTO,
-  ): Promise<IPaginationOutputDTO<Tutorial>> {
-    throw new Error('Method not implemented.');
-  }
   @injectEngine(MODULE.INFRA.ENGINE.GATEWAY.HTTP.AXIOS)
   private readonly engine!: AxiosHttpGateway;
   @injectConfig(MODULE.INFRA.CONFIG.API.URL)
   private readonly baseApiUrl!: string;
-
   private readonly api_url = `${this.baseApiUrl}/tutorial`;
+
+  async create(tutorial: ICreateTutorialDTO) {
+    const response = await this.engine.post<ITutorialDTO>(
+      `${this.api_url}`,
+      tutorial,
+    );
+
+    return Tutorial.fromDTO(response.data);
+  }
+
+  async update(tutorial: IUpdateTutorialDTO) {
+    return Tutorial.fromDTO(
+      (
+        await this.engine.put<ITutorialDTO>(
+          `${this.api_url}/${tutorial.id}`,
+          tutorial,
+        )
+      ).data,
+    );
+  }
+
+  async delete(tutorial: IDeleteTutorialDTO) {
+    return (
+      (await this.engine.delete(`${this.api_url}/${tutorial.id}`)).status ===
+      200
+    );
+  }
+
+  async listAll({ pagination: { limit, page } }: IListAllTutorialsDTO) {
+    const response = (
+      await this.engine.get(`${this.api_url}?page=${page}&limit=${limit}`)
+    ).data as IPaginationOutputDTO<ITutorialDTO>;
+
+    return {
+      ...response,
+      items: response.items.map(Tutorial.fromDTO),
+    } as IPaginationOutputDTO<Tutorial>;
+  }
+
+  async findByTitle({ title, limit, page }: IFilterTutorialsByTitleDTO) {
+    const response = (
+      await this.engine.get(
+        `${this.api_url}/title?title=${title}&page=${page}&limit=${limit}`,
+      )
+    ).data as IPaginationOutputDTO<ITutorialDTO>;
+
+    return {
+      ...response,
+      items: response.items.map(Tutorial.fromDTO),
+    } as IPaginationOutputDTO<Tutorial>;
+  }
+
+  async findByAuthor({ author, limit, page }: IFilterTutorialsByAuthorDTO) {
+    const response = (
+      await this.engine.get(
+        `${this.api_url}/author?author=${author}&page=${page}&limit=${limit}`,
+      )
+    ).data as IPaginationOutputDTO<ITutorialDTO>;
+
+    return {
+      ...response,
+      items: response.items.map(Tutorial.fromDTO),
+    } as IPaginationOutputDTO<Tutorial>;
+  }
+
+  async findByKeywordInContent({ keyword }: IFilterTutorialsByContentDTO) {
+    const response = (
+      await this.engine.get(`${this.api_url}/content?keyword=${keyword}`)
+    ).data as IPaginationOutputDTO<ITutorialDTO>;
+
+    return {
+      ...response,
+      items: response.items.map(Tutorial.fromDTO),
+    } as IPaginationOutputDTO<Tutorial>;
+  }
 }
