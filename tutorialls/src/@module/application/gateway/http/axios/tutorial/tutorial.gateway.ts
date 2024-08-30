@@ -21,6 +21,7 @@ export class AxiosHttpTutorialGateway implements ITutorialGateway {
   private readonly engine!: AxiosHttpGateway;
   @injectConfig(MODULE.INFRA.CONFIG.API.URL)
   private readonly baseApiUrl!: string;
+
   private readonly api_url = `${this.baseApiUrl}/tutorial`;
 
   async create(tutorial: ICreateTutorialDTO) {
