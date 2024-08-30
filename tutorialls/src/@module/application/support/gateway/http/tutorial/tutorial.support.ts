@@ -1,0 +1,10 @@
+import { MODULE } from '@/@module/app.registry';
+import { injectGateway } from '@/@module/application/gateway/gateway.module';
+import type { ITutorialGateway } from '@/@module/domain/gateway/tutorial/tutorial.gateway';
+import { injectable } from 'inversify';
+
+@injectable()
+export abstract class AxiosHttpAuthGatewaySupport {
+  @injectGateway(MODULE.APPLICATION.GATEWAY.HTTP.AXIOS.AUTH)
+  protected readonly gateway!: ITutorialGateway;
+}
