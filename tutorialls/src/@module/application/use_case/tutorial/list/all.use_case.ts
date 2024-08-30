@@ -1,6 +1,6 @@
 import { AxiosHttpTutorialGatewaySupport } from '@/@module/application/support/gateway/http/tutorial/tutorial.support';
+import { IListAllTutorialsDTO } from '@/@module/domain/DTO/tutorial/list/all.dto';
 import { IListAllTutorialsUseCase } from '@/@module/domain/use_case/tutorials/list/all.use_case';
-import { IListAllTutorialsDTO } from '@/tutorial/list/all.dto';
 import { injectable } from 'inversify';
 
 @injectable()
