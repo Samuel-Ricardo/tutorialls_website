@@ -4,7 +4,7 @@ import type { ITutorialGateway } from '@/@module/domain/gateway/tutorial/tutoria
 import { injectable } from 'inversify';
 
 @injectable()
-export abstract class AxiosHttpAuthGatewaySupport {
+export abstract class AxiosHttpTutorialGatewaySupport {
   @injectGateway(MODULE.APPLICATION.GATEWAY.HTTP.AXIOS.AUTH)
   protected readonly gateway!: ITutorialGateway;
 }
