@@ -10,6 +10,7 @@ import { useCallback } from 'react';
 import { useAuth } from '@/hook/auth/login.hook';
 import { FormField } from './field/field.component';
 import { Button } from '../button/button.component';
+import useSessionStore from '@/store/session.store';
 
 export const LoginForm = () => {
   const router = useRouter();
@@ -32,6 +33,10 @@ export const LoginForm = () => {
       }),
     [handleSubmit, loginAsync, router],
   );
+
+  //  const { refresh, isAuthenticated } = useSessionStore();
+  //  refresh();
+  //  if (isAuthenticated()) router.push('/tutorials');
 
   return (
     <form onSubmit={submit()} className="flex flex-col gap-4 my-10">

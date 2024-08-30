@@ -7,6 +7,9 @@ export const FormField = ({
   type,
   placeholder,
   label,
+  defaultValue,
+  onChange,
+  value,
 }: IFormFieldProps) => {
   return (
     <div className="flex flex-col w-full gap-2">
@@ -19,6 +22,7 @@ export const FormField = ({
         type={type}
         placeholder={placeholder}
         className="p-2 rounded-lg"
+        {...{ onChange, defaultValue, value }}
         {...hook}
       />
       <p className="text-red-500">{error}</p>
