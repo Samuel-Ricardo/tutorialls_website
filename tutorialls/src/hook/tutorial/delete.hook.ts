@@ -22,8 +22,8 @@ export const useTutorialDeletion = () => {
   });
 
   return {
-    create: remove,
-    createAsync: removeAsync,
+    remove,
+    removeAsync,
     data,
     isPending,
     error,
