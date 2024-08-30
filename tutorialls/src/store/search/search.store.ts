@@ -7,7 +7,7 @@ interface ISearchState {
   setFilterBy: (filterBy: 'title' | 'keyword' | 'author') => void;
 }
 
-const useSearchStore = create<ISearchState>(set => ({
+export const useSearchTutorialStore = create<ISearchState>(set => ({
   query: '',
   filterBy: 'title',
   setQuery: (query: string) => set({ query }),
