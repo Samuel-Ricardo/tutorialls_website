@@ -25,6 +25,29 @@ services:
     external_links:
       - 'host.docker.internal'
 
+  redis:
+    image: redis
+    restart: always
+    ports:
+      - '6379:6379'
+    external_links:
+      - 'host.docker.internal'
+
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: 'rabbitmq'
+    ports:
+      - 5672:5672
+      - 15672:15672
+    volumes:
+      - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+      - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin
+    external_links:
+      - 'host.docker.internal'
+
   postgres:
     image: postgres:latest
     restart: always
