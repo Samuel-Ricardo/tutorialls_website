@@ -1,5 +1,3 @@
-import { MODULES } from '@/@module/app.facotry';
-import { TutorialCard } from '../../card/tutorial.card';
 import { ListTutorialContainer } from '../container.component';
 
 export const ListAllTutorial = async () => {

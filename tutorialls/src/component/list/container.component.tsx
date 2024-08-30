@@ -7,7 +7,7 @@ export const ListTutorialContainer = async ({
   data: ITutorialDTO[];
 }) => {
   return (
-    <ul className="flex flex-col gap-4 p-5">
+    <ul className="flex flex-col gap-4 p-5 my-10">
       {data.map(tutorial => (
         <li key={tutorial.id}>
           <TutorialCard data={tutorial} />
