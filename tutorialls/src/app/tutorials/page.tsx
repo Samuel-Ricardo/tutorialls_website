@@ -1,4 +1,5 @@
 import { LazyParagraph } from '@/component/lazy/paragraph.component';
+import { ListAllTutorial } from '@/component/list/all/tutorials.component';
 import { SearchTutorial } from '@/component/search/tutorial.component';
 import { H1 } from '@/component/typography/h1.component';
 import { AuthWall } from '@/component/wall/auth.wall';
@@ -16,7 +17,9 @@ export default function Tutorials() {
       <div className="w-full h-full">
         <SearchTutorial />
       </div>
-      <div className="w-full h-full">:D</div>
+      <div className="w-full h-full">
+        <ListAllTutorial />
+      </div>
     </main>
     //    </AuthWall>
   );

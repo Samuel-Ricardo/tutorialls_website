@@ -29,18 +29,34 @@ export class TutorialController {
   }
 
   async listAll(DTO: IListAllTutorialsDTO) {
-    return await this.service.listAll(DTO);
+    const result = await this.service.listAll(DTO);
+    return {
+      ...result,
+      items: result.items.map(tutorial => tutorial.toDTO()),
+    };
   }
 
   async filterByTitle(DTO: IFilterTutorialsByTitleUseCase) {
-    return await this.service.filterByTitle(DTO);
+    const result = await this.service.filterByTitle(DTO);
+    return {
+      ...result,
+      items: result.items.map(tutorial => tutorial.toDTO()),
+    };
   }
 
   async filterByAuthor(DTO: IFilterTutorialsByAuthorDTO) {
-    return await this.service.filterByAuthor(DTO);
+    const result = await this.service.filterByAuthor(DTO);
+    return {
+      ...result,
+      items: result.items.map(tutorial => tutorial.toDTO()),
+    };
   }
 
   async filterByKeywordInContent(DTO: IFilterTutorialsByContentDTO) {
-    return await this.service.filterByKeywordInContent(DTO);
+    const result = await this.service.filterByKeywordInContent(DTO);
+    return {
+      ...result,
+      items: result.items.map(tutorial => tutorial.toDTO()),
+    };
   }
 }
