@@ -17,11 +17,11 @@ export class TutorialController {
   ) {}
 
   async create(tutorial: ICreateTutorialDTO) {
-    return await this.service.create(tutorial);
+    return (await this.service.create(tutorial)).toDTO();
   }
 
   async update(tutorial: IUpdateTutorialDTO) {
-    return await this.service.update(tutorial);
+    return (await this.service.update(tutorial)).toDTO();
   }
 
   async delete(tutorial: IDeleteTutorialDTO) {
