@@ -23,7 +23,7 @@ export const useTutorialFilterByTitle = () => {
       await toast.promise(MODULE.filterByAuthor(DTO), {
         loading: `Filtering tutorials... 🚀`,
         success: `Filtered tutorials! 🎉`,
-        error: `Filtering tutorials failed! ❌`,
+        error: `Filtering tutorials failed! 🐞`,
       }),
   });
 

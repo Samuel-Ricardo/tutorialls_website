@@ -1,35 +1,36 @@
 import { MODULES } from '@/@module/app.facotry';
-import { IFilterTutorialsByContentDTO } from '@/@module/domain/DTO/tutorial/filter/by/content.dto';
+import { IFilterTutorialsByAuthorDTO } from '@/@module/domain/DTO/tutorial/filter/by/author.dto';
+import { IListAllTutorialsDTO } from '@/@module/domain/DTO/tutorial/list/all.dto';
 import { ITutorialDTO } from '@/@module/domain/DTO/tutorial/tutorial.dto';
 import { IPaginationOutputDTO } from '@/pagination/output.dto';
 import { useMutation } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
 
-export const useTutorialFilterByKeyword = () => {
+export const useTutorialFilterByTitle = () => {
   const MODULE = MODULES.APPLICATION.CONTROLLER.TUTORIAL();
 
   const {
-    mutate: filterByKeyword,
-    mutateAsync: filterByKeywordAsync,
+    mutate: listAll,
+    mutateAsync: listAllAsync,
     data,
     isPending,
     error,
   } = useMutation<
     IPaginationOutputDTO<ITutorialDTO>,
     any,
-    IFilterTutorialsByContentDTO
+    IListAllTutorialsDTO
   >({
     mutationFn: async DTO =>
-      await toast.promise(MODULE.filterByKeywordInContent(DTO), {
-        loading: `Filtering tutorials... 🚀`,
-        success: `Filtered tutorials! 🎉`,
-        error: `Filtering tutorials failed! 🐜`,
+      await toast.promise(MODULE.listAll(DTO), {
+        loading: `Listing tutorials... 🌌`,
+        success: `Listed tutorials! 🎉`,
+        error: `Listing tutorials failed! 🐛`,
       }),
   });
 
   return {
-    filterByKeyword,
-    filterByKeywordAsync,
+    listAll,
+    listAllAsync,
     data,
     isPending,
     error,
