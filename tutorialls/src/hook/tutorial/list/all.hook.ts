@@ -6,7 +6,7 @@ import { IPaginationOutputDTO } from '@/pagination/output.dto';
 import { useMutation } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
 
-export const useTutorialFilterByTitle = () => {
+export const useTutorials = () => {
   const MODULE = MODULES.APPLICATION.CONTROLLER.TUTORIAL();
 
   const {

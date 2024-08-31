@@ -1,5 +1,5 @@
 import { MODULES } from '@/@module/app.facotry';
-import { IFilterTutorialsByAuthorDTO } from '@/@module/domain/DTO/tutorial/filter/by/author.dto';
+import { IFilterTutorialsByTitleDTO } from '@/@module/domain/DTO/tutorial/filter/by/title.dto';
 import { ITutorialDTO } from '@/@module/domain/DTO/tutorial/tutorial.dto';
 import { IPaginationOutputDTO } from '@/pagination/output.dto';
 import { useMutation } from '@tanstack/react-query';
@@ -17,14 +17,16 @@ export const useTutorialFilterByTitle = () => {
   } = useMutation<
     IPaginationOutputDTO<ITutorialDTO>,
     any,
-    IFilterTutorialsByAuthorDTO
+    IFilterTutorialsByTitleDTO
   >({
-    mutationFn: async DTO =>
-      await toast.promise(MODULE.filterByAuthor(DTO), {
+    mutationFn: async DTO => {
+      toast.dismiss();
+      return await toast.promise(MODULE.filterByTitle(DTO), {
         loading: `Filtering tutorials... 🚀`,
         success: `Filtered tutorials! 🎉`,
         error: `Filtering tutorials failed! 🐞`,
-      }),
+      });
+    },
   });
 
   return {
