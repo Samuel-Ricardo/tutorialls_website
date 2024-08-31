@@ -5,6 +5,6 @@ import { injectable } from 'inversify';
 
 @injectable()
 export abstract class AxiosHttpTutorialGatewaySupport {
-  @injectGateway(MODULE.APPLICATION.GATEWAY.HTTP.AXIOS.AUTH)
+  @injectGateway(MODULE.APPLICATION.GATEWAY.HTTP.AXIOS.TUTORIAL)
   protected readonly gateway!: ITutorialGateway;
 }
