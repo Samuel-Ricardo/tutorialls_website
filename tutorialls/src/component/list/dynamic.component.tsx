@@ -2,6 +2,8 @@
 
 import { useSearchTutorialStore } from '@/store/search/search.store';
 import { TutorialListFilteredByTitle } from './filter/title.component';
+import { TutorialListFilteredByKeyword } from './filter/keyword.component';
+import { TutorialListFilteredByAuthor } from './filter/author.component';
 
 export const DynamicTutorialList = ({
   children: placeholder,
@@ -15,9 +17,9 @@ export const DynamicTutorialList = ({
     case 'title':
       return <TutorialListFilteredByTitle query={query} />;
     case 'author':
-      return <></>;
+      return <TutorialListFilteredByAuthor query={query} />;
     case 'keyword':
-      return <></>;
+      return <TutorialListFilteredByKeyword query={query} />;
     default:
       return <>{placeholder}</>;
   }
