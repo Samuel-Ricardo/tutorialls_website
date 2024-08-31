@@ -1,6 +1,6 @@
 'use client';
 
-import { Button } from '../../button.component';
+import { Button } from '../button.component';
 import { useTutorialDeletion } from '@/hook/tutorial/delete.hook';
 import { useCallback } from 'react';
 import { RiDeleteBin5Line } from 'react-icons/ri';

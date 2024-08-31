@@ -3,7 +3,7 @@ import { CardHeader } from './atom/title.card';
 import { CardBody } from './atom/body.card';
 import { CardFooter } from './atom/footer.card';
 import { UpdateCardButton } from '../button/modal/card/update.button';
-import { DeleteCardButton } from '../button/modal/card/delete.button';
+import { DeleteCardButton } from '../button/card/delete.button';
 
 export const TutorialCard = ({
   data,

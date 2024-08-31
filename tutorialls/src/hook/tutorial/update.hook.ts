@@ -18,7 +18,7 @@ export const useTutorialUpdate = () => {
       await toast.promise(MODULE.update(DTO), {
         loading: `Updating tutorial... 🌱`,
         success: `Tutorial updated! 🎉`,
-        error: `Tutorial updated failed! ❌`,
+        error: `Tutorial update failed! ❌`,
       }),
   });
 

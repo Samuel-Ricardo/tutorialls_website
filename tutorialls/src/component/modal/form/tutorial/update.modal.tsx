@@ -1,11 +1,14 @@
+'use client';
+
 import { SignupForm } from '@/component/form/signup.form';
 import { LazyParagraph } from '@/component/lazy/paragraph.component';
 import { H1 } from '@/component/typography/h1.component';
 import useUpdateCardModalStore from '@/store/modal/card/update.store';
 import { Modal } from '../../modal.component';
+import { UpdateTutorialForm } from '@/component/form/tutorial/update.format';
 
 export const UpdateTutorialModal = () => {
-  const { isOpen, closeModal } = useUpdateCardModalStore();
+  const { isOpen, closeModal, data } = useUpdateCardModalStore();
 
   return (
     <Modal isOpen={isOpen} close={closeModal}>
@@ -13,7 +16,7 @@ export const UpdateTutorialModal = () => {
         <LazyParagraph id="lbl_update_tutorial" defaultValue="Tutorial" />
       </H1>
 
-      <UpdateTutorialModal />
+      <UpdateTutorialForm tutorial={data} />
     </Modal>
   );
 };
