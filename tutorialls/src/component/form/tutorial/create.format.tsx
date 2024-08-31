@@ -13,6 +13,7 @@ import {
   createTutorialFormSchema,
   ICreateTutorialForm,
 } from '@/validation/zod/form/card/create.schema';
+import { FormTextArea } from '../field/text_area.component';
 
 export const CreateTutorialForm = () => {
   const { createAsync, error } = useTutorialCreation();
@@ -48,7 +49,7 @@ export const CreateTutorialForm = () => {
         error={errors.title?.message}
       />
 
-      <FormField
+      <FormTextArea
         label={{
           id: 'lbl_content',
           defaultValue: 'Content',

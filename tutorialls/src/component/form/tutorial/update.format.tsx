@@ -14,6 +14,7 @@ import {
   ICreateTutorialForm,
 } from '@/validation/zod/form/card/create.schema';
 import { ITutorialDTO } from '@/@module/domain/DTO/tutorial/tutorial.dto';
+import { FormTextArea } from '../field/text_area.component';
 
 export const UpdateTutorialForm = ({
   tutorial,
@@ -54,7 +55,7 @@ export const UpdateTutorialForm = ({
         error={errors.title?.message}
       />
 
-      <FormField
+      <FormTextArea
         label={{
           id: 'lbl_content',
           defaultValue: 'Content',

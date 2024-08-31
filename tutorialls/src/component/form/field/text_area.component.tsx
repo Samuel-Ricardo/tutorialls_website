@@ -1,7 +1,7 @@
 import { IFormFieldProps } from '@/@type/props/component/form/field.props';
 import { LazyParagraph } from '@/component/lazy/paragraph.component';
 
-export const FormField = ({
+export const FormTextArea = ({
   hook,
   error,
   type,
@@ -18,7 +18,7 @@ export const FormField = ({
           <LazyParagraph id={label.id} defaultValue={label.defaultValue} />
         </label>
       )}
-      <input
+      <textarea
         type={type}
         placeholder={placeholder}
         className="p-2 rounded-lg h-fit bg-[#171717] text-[#76ff02] outline-none"
