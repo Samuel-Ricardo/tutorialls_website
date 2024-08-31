@@ -10,9 +10,11 @@ import {
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useCallback } from 'react';
 import { useForm } from 'react-hook-form';
+import { useRouter } from 'next/navigation';
 
 export const SearchTutorial = () => {
   const { setQuery, setFilterBy } = useSearchTutorialStore();
+  const { refresh } = useRouter();
 
   const {
     register,
@@ -26,10 +28,11 @@ export const SearchTutorial = () => {
     () =>
       handleSubmit(async ({ query, filterBy }) => {
         setFilterBy(filterBy);
-        setQuery(query);
-        //filterBy(query, filterBy);
+        setQuery(query || '');
+
+        refresh();
       }),
-    [handleSubmit, setQuery, setFilterBy],
+    [handleSubmit, setQuery, setFilterBy, refresh],
   );
 
   return (
@@ -41,7 +44,7 @@ export const SearchTutorial = () => {
         }}
         type="search"
         placeholder="Search..."
-        onChange={e => setQuery(e.target.value)}
+        //        onChange={e => setQuery(e.target.value)}
         hook={register('query')}
         error={errors.query?.message}
       />
