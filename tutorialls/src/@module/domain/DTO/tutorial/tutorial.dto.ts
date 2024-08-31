@@ -3,6 +3,7 @@ export interface ITutorialDTO {
   title: string;
   content: string;
   author: string;
+  autor?: string;
   created_at?: Date;
   updated_at?: Date;
 }

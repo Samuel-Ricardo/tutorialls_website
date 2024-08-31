@@ -30,6 +30,7 @@ export class Tutorial {
       title: this.title,
       content: this.content,
       author: this.autor,
+      autor: this.autor,
       created_at: this.created_at,
       updated_at: this.updated_at,
     };
@@ -40,7 +41,7 @@ export class Tutorial {
       dto.id!,
       dto.title,
       dto.content,
-      dto.author,
+      dto.autor || dto.author,
       dto.created_at,
       dto.updated_at,
     );
