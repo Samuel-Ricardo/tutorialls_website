@@ -7,8 +7,7 @@ import { RiDeleteBin5Line } from 'react-icons/ri';
 
 export const DeleteCardButton = ({ key: id }: { key: string }) => {
   const { remove } = useTutorialDeletion();
-
-  const onClick = useCallback(() => remove(id), [remove, id]);
+  const onClick = useCallback(() => remove({ id }), [remove, id]);
 
   return (
     <Button onClick={() => onClick()}>
