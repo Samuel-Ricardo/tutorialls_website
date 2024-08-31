@@ -43,7 +43,7 @@ export class AxiosHttpTutorialGateway implements ITutorialGateway {
   async update(tutorial: IUpdateTutorialDTO) {
     return Tutorial.fromDTO(
       (
-        await this.engine.put<ITutorialDTO>(
+        await this.engine.patch<ITutorialDTO>(
           `${this.api_url}/${tutorial.id}`,
           tutorial,
           this.header,
