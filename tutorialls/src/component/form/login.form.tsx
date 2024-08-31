@@ -34,9 +34,9 @@ export const LoginForm = () => {
     [handleSubmit, loginAsync, router],
   );
 
-  //  const { refresh, isAuthenticated } = useSessionStore();
-  //  refresh();
-  //  if (isAuthenticated()) router.push('/tutorials');
+  const { refresh, isAuthenticated } = useSessionStore();
+  refresh();
+  if (isAuthenticated()) router.push('/tutorials');
 
   return (
     <form onSubmit={submit()} className="flex flex-col gap-4 my-10">

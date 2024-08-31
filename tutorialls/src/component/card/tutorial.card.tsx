@@ -15,11 +15,11 @@ export const TutorialCard = ({
     <div className="flex flex-col ease-in-out duration-300 w-full h-fit p-5 shadow-md shadow-[#76ff00] hover:shadow-lg hover:shadow-[#76ff02] hover:scale-105 bg-[#171717] rounded-lg">
       <CardHeader>
         <h1>{data.title}</h1>
-        <DeleteCardButton key={data.id!} />
+        <DeleteCardButton data={data} />
       </CardHeader>
       <CardBody>{data.content} </CardBody>
       <CardFooter>
-        {data.author}
+        {data.autor || data.author}
         <UpdateCardButton data={data} />
       </CardFooter>
     </div>
