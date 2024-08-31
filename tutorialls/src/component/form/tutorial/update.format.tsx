@@ -7,15 +7,20 @@ import { useCallback } from 'react';
 
 import { Button } from '@/component/button/button.component';
 import { FormField } from '../field/field.component';
-import { useTutorialCreation } from '@/hook/tutorial/create.hook';
+import { useTutorialUpdate } from '@/hook/tutorial/update.hook';
 import useCreateTutorialModalStore from '@/store/modal/card/create.store';
 import {
   createTutorialFormSchema,
   ICreateTutorialForm,
 } from '@/validation/zod/form/card/create.schema';
+import { ITutorialDTO } from '@/@module/domain/DTO/tutorial/tutorial.dto';
 
-export const CreateTutorialForm = () => {
-  const { createAsync, error } = useTutorialCreation();
+export const UpdateTutorialForm = ({
+  tutorial,
+}: {
+  tutorial?: ITutorialDTO;
+}) => {
+  const { updateAsync, error } = useTutorialUpdate();
   const { closeModal } = useCreateTutorialModalStore();
 
   const {
@@ -29,10 +34,10 @@ export const CreateTutorialForm = () => {
   const submit = useCallback(
     () =>
       handleSubmit(async data => {
-        await createAsync(data);
+        await updateAsync({ id: tutorial?.id, ...data });
         if (!error) closeModal();
       }),
-    [handleSubmit, createAsync, closeModal, error],
+    [handleSubmit, updateAsync, closeModal, error, tutorial?.id],
   );
 
   return (
@@ -42,6 +47,7 @@ export const CreateTutorialForm = () => {
           id: 'lbl_title',
           defaultValue: 'Title',
         }}
+        defaultValue={tutorial?.title}
         type="text"
         placeholder="My first NestJS tutorial :D"
         hook={register('title')}
@@ -53,6 +59,7 @@ export const CreateTutorialForm = () => {
           id: 'lbl_content',
           defaultValue: 'Content',
         }}
+        defaultValue={tutorial?.content}
         type="text"
         placeholder="This tutorial will help you to understand NestJS..."
         hook={register('content')}
@@ -63,13 +70,14 @@ export const CreateTutorialForm = () => {
           id: 'lbl_author',
           defaultValue: 'Author',
         }}
+        defaultValue={tutorial?.author}
         type="text"
         placeholder="Samuel"
         hook={register('author')}
         error={errors.title?.message}
       />
 
-      <Button id="btn_create_tutorial_subtmit" label="Create" type="submit" />
+      <Button id="btn_update_tutorial_subtmit" label="Update" type="submit" />
     </form>
   );
 };

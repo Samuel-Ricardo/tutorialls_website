@@ -4,7 +4,7 @@ import { IUpdateTutorialDTO } from '@/@module/domain/DTO/tutorial/update.dto';
 import { useMutation } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
 
-export const useTutorialDeletion = () => {
+export const useTutorialUpdate = () => {
   const MODULE = MODULES.APPLICATION.CONTROLLER.TUTORIAL();
 
   const {
