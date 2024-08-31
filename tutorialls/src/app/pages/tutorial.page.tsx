@@ -1,6 +1,7 @@
 import { ToggleCreateTutorialModalButton } from '@/component/button/modal/card/create.button';
 import { LazyParagraph } from '@/component/lazy/paragraph.component';
 import { ListAllTutorial } from '@/component/list/all/tutorials.component';
+import { DynamicTutorialList } from '@/component/list/dynamic.component';
 import { CreateTutorialModal } from '@/component/modal/form/tutorial/create.modal';
 import { UpdateTutorialModal } from '@/component/modal/form/tutorial/update.modal';
 import { SearchTutorial } from '@/component/search/tutorial.component';
@@ -22,7 +23,9 @@ export const TutorialsPage = () => {
         <ToggleCreateTutorialModalButton />
       </div>
       <div className="w-full h-full">
-        <ListAllTutorial />
+        <DynamicTutorialList>
+          <ListAllTutorial />
+        </DynamicTutorialList>
       </div>
 
       <CreateTutorialModal />
