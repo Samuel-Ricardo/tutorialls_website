@@ -1,18 +1,19 @@
 import { MODULE } from '@/@module/app.registry';
+import { ICreateTutorialDTO } from '@/@module/domain/DTO/tutorial/create.dto';
+import { IDeleteTutorialDTO } from '@/@module/domain/DTO/tutorial/delete.dto';
+import { IFilterTutorialsByAuthorDTO } from '@/@module/domain/DTO/tutorial/filter/by/author.dto';
+import { IFilterTutorialsByContentDTO } from '@/@module/domain/DTO/tutorial/filter/by/content.dto';
+import { IFilterTutorialsByTitleDTO } from '@/@module/domain/DTO/tutorial/filter/by/title.dto';
+import { IListAllTutorialsDTO } from '@/@module/domain/DTO/tutorial/list/all.dto';
+import { ITutorialDTO } from '@/@module/domain/DTO/tutorial/tutorial.dto';
+import { IUpdateTutorialDTO } from '@/@module/domain/DTO/tutorial/update.dto';
 import { Tutorial } from '@/@module/domain/entity/tutorial.entity';
 import { ITutorialGateway } from '@/@module/domain/gateway/tutorial/tutorial.gateway';
 import { injectConfig } from '@/@module/infra/config/config.module';
 import { injectEngine } from '@/@module/infra/engine/engine.module';
 import { AxiosHttpGateway } from '@/@module/infra/engine/gateway/http/axios/axios.gateway';
+import { GlobalSession } from '@/global/session.global';
 import { IPaginationOutputDTO } from '@/pagination/output.dto';
-import { ICreateTutorialDTO } from '@/tutorial/create.dto';
-import { IDeleteTutorialDTO } from '@/tutorial/delete.dto';
-import { IFilterTutorialsByAuthorDTO } from '@/tutorial/filter/by/author.dto';
-import { IFilterTutorialsByContentDTO } from '@/tutorial/filter/by/content.dto';
-import { IFilterTutorialsByTitleDTO } from '@/tutorial/filter/by/title.dto';
-import { IListAllTutorialsDTO } from '@/tutorial/list/all.dto';
-import { ITutorialDTO } from '@/tutorial/tutorial.dto';
-import { IUpdateTutorialDTO } from '@/tutorial/update.dto';
 import { injectable } from 'inversify';
 
 @injectable()
@@ -23,11 +24,17 @@ export class AxiosHttpTutorialGateway implements ITutorialGateway {
   private readonly baseApiUrl!: string;
 
   private readonly api_url = `${this.baseApiUrl}/tutorial`;
+  private readonly header = {
+    headers: {
+      Authorization: `Bearer ${GlobalSession.user?.authToken}`,
+    },
+  };
 
   async create(tutorial: ICreateTutorialDTO) {
     const response = await this.engine.post<ITutorialDTO>(
       `${this.api_url}`,
       tutorial,
+      this.header,
     );
 
     return Tutorial.fromDTO(response.data);
@@ -39,6 +46,7 @@ export class AxiosHttpTutorialGateway implements ITutorialGateway {
         await this.engine.put<ITutorialDTO>(
           `${this.api_url}/${tutorial.id}`,
           tutorial,
+          this.header,
         )
       ).data,
     );
@@ -46,14 +54,17 @@ export class AxiosHttpTutorialGateway implements ITutorialGateway {
 
   async delete(tutorial: IDeleteTutorialDTO) {
     return (
-      (await this.engine.delete(`${this.api_url}/${tutorial.id}`)).status ===
-      200
+      (await this.engine.delete(`${this.api_url}/${tutorial.id}`, this.header))
+        .status === 200
     );
   }
 
   async listAll({ pagination: { limit, page } }: IListAllTutorialsDTO) {
     const response = (
-      await this.engine.get(`${this.api_url}?page=${page}&limit=${limit}`)
+      await this.engine.get(
+        `${this.api_url}?page=${page}&limit=${limit}`,
+        this.header,
+      )
     ).data as IPaginationOutputDTO<ITutorialDTO>;
 
     return {
@@ -66,6 +77,7 @@ export class AxiosHttpTutorialGateway implements ITutorialGateway {
     const response = (
       await this.engine.get(
         `${this.api_url}/title?title=${title}&page=${page}&limit=${limit}`,
+        this.header,
       )
     ).data as IPaginationOutputDTO<ITutorialDTO>;
 
@@ -79,6 +91,7 @@ export class AxiosHttpTutorialGateway implements ITutorialGateway {
     const response = (
       await this.engine.get(
         `${this.api_url}/author?author=${author}&page=${page}&limit=${limit}`,
+        this.header,
       )
     ).data as IPaginationOutputDTO<ITutorialDTO>;
 
@@ -90,7 +103,10 @@ export class AxiosHttpTutorialGateway implements ITutorialGateway {
 
   async findByKeywordInContent({ keyword }: IFilterTutorialsByContentDTO) {
     const response = (
-      await this.engine.get(`${this.api_url}/content?keyword=${keyword}`)
+      await this.engine.get(
+        `${this.api_url}/content?keyword=${keyword}`,
+        this.header,
+      )
     ).data as IPaginationOutputDTO<ITutorialDTO>;
 
     return {

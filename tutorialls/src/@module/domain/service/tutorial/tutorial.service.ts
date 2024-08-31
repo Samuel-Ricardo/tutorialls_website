@@ -1,11 +1,11 @@
 import { IPaginationOutputDTO } from '@/pagination/output.dto';
-import { ICreateTutorialDTO } from '@/tutorial/create.dto';
-import { IDeleteTutorialDTO } from '@/tutorial/delete.dto';
-import { IFilterTutorialsByAuthorDTO } from '@/tutorial/filter/by/author.dto';
-import { IFilterTutorialsByContentDTO } from '@/tutorial/filter/by/content.dto';
-import { IFilterTutorialsByTitleDTO } from '@/tutorial/filter/by/title.dto';
-import { IListAllTutorialsDTO } from '@/tutorial/list/all.dto';
-import { IUpdateTutorialDTO } from '@/tutorial/update.dto';
+import { ICreateTutorialDTO } from '../../DTO/tutorial/create.dto';
+import { IDeleteTutorialDTO } from '../../DTO/tutorial/delete.dto';
+import { IFilterTutorialsByAuthorDTO } from '../../DTO/tutorial/filter/by/author.dto';
+import { IFilterTutorialsByContentDTO } from '../../DTO/tutorial/filter/by/content.dto';
+import { IFilterTutorialsByTitleDTO } from '../../DTO/tutorial/filter/by/title.dto';
+import { IListAllTutorialsDTO } from '../../DTO/tutorial/list/all.dto';
+import { IUpdateTutorialDTO } from '../../DTO/tutorial/update.dto';
 import { Tutorial } from '../../entity/tutorial.entity';
 
 export interface ITutorialService {

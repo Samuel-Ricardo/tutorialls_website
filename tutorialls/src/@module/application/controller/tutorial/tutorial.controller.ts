@@ -3,6 +3,7 @@ import { ICreateTutorialDTO } from '@/@module/domain/DTO/tutorial/create.dto';
 import { IDeleteTutorialDTO } from '@/@module/domain/DTO/tutorial/delete.dto';
 import { IFilterTutorialsByAuthorDTO } from '@/@module/domain/DTO/tutorial/filter/by/author.dto';
 import { IFilterTutorialsByContentDTO } from '@/@module/domain/DTO/tutorial/filter/by/content.dto';
+import { IFilterTutorialsByTitleDTO } from '@/@module/domain/DTO/tutorial/filter/by/title.dto';
 import { IListAllTutorialsDTO } from '@/@module/domain/DTO/tutorial/list/all.dto';
 import { IUpdateTutorialDTO } from '@/@module/domain/DTO/tutorial/update.dto';
 import type { ITutorialService } from '@/@module/domain/service/tutorial/tutorial.service';
@@ -36,7 +37,7 @@ export class TutorialController {
     };
   }
 
-  async filterByTitle(DTO: IFilterTutorialsByTitleUseCase) {
+  async filterByTitle(DTO: IFilterTutorialsByTitleDTO) {
     const result = await this.service.filterByTitle(DTO);
     return {
       ...result,

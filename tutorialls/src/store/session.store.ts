@@ -2,6 +2,7 @@
 
 import { MODULES } from '@/@module/app.facotry';
 import { IUserDTO } from '@/@module/domain/DTO/user.dto';
+import { GlobalSession } from '@/global/session.global';
 import toast from 'react-hot-toast';
 import create from 'zustand';
 
@@ -23,6 +24,7 @@ const useSessionStore = create<ISessionState>(set => ({
       });
 
       set({ user });
+      GlobalSession.user = user;
     } catch (e) {
       set({ user: undefined });
       toast.dismiss();

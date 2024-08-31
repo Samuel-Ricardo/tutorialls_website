@@ -1,4 +1,4 @@
-import { ITutorialDTO } from '@/tutorial/tutorial.dto';
+import { ITutorialDTO } from '../DTO/tutorial/tutorial.dto';
 
 export class Tutorial {
   private readonly id: string;
