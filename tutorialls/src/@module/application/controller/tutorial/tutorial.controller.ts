@@ -7,7 +7,6 @@ import { IFilterTutorialsByTitleDTO } from '@/@module/domain/DTO/tutorial/filter
 import { IListAllTutorialsDTO } from '@/@module/domain/DTO/tutorial/list/all.dto';
 import { IUpdateTutorialDTO } from '@/@module/domain/DTO/tutorial/update.dto';
 import type { ITutorialService } from '@/@module/domain/service/tutorial/tutorial.service';
-import { IFilterTutorialsByTitleUseCase } from '@/@module/domain/use_case/tutorials/filter/by/title.use_case';
 import { inject, injectable } from 'inversify';
 
 @injectable()
