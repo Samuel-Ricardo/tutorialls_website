@@ -1,19 +1,15 @@
-import { MODULES } from '@/@module/app.facotry';
+'use client';
+
 import { ListTutorialContainer } from '../container.component';
+import { useTutorials } from '@/hook/tutorial/list/all.hook';
+import { useEffect } from 'react';
 
-export const revalidate = 3;
-export const dynamicParams = true;
+export const ListAllTutorial = () => {
+  const { data, listAll } = useTutorials();
 
-export const ListAllTutorial = async () => {
-  try {
-    const list = await MODULES.APPLICATION.CONTROLLER.TUTORIAL().listAll({
-      pagination: { limit: 10, page: 1 },
-    });
-    return (
-      <>{list?.items ? <ListTutorialContainer data={list.items} /> : <></>}</>
-    );
-  } catch (e) {
-    console.log(e);
-    return <></>;
-  }
+  useEffect(() => {
+    listAll({ pagination: { limit: 10, page: 1 } });
+  }, [listAll]);
+
+  return <ListTutorialContainer data={data?.items || []} />;
 };
