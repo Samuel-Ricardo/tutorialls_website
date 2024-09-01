@@ -1,3 +1,6 @@
+'use client';
+import 'reflect-metadata';
+
 import { inject, injectable } from 'inversify';
 import { ICMSGateway } from '../../../../infra/engine/gateway/cms/cms.gateway';
 import { MODULE } from '@/@module/app.registry';
@@ -15,13 +18,11 @@ export class SanityCMSGateway implements ICMSGateway {
     const query = `*[_type == "paragraphs" && identifier == $identifier][0]{ body }`;
     const params = { identifier: id };
     const result = await this.engine.fetch(query, params);
-    console.log({ result });
     return result.body;
   }
   async getImage({ id }: IGetFromCMSDTO) {
     const query = `*[_type == "images" && identifier == $identifier][0]{ "imageUrl": imageD.asset->url }`;
     const result = await this.engine.fetch(query, { identifier: id });
-    console.log({ result });
     return result.imageUrl;
   }
 }

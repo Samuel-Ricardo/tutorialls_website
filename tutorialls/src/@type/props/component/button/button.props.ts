@@ -1,6 +1,7 @@
 export interface IButtonProps {
-  id: string;
-  label: string;
+  id?: string;
+  label?: string;
   type?: 'button' | 'submit' | 'reset';
   onClick?: () => void;
+  children?: React.ReactNode;
 }

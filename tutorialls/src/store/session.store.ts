@@ -2,6 +2,7 @@
 
 import { MODULES } from '@/@module/app.facotry';
 import { IUserDTO } from '@/@module/domain/DTO/user.dto';
+import { GlobalSession } from '@/global/session.global';
 import toast from 'react-hot-toast';
 import create from 'zustand';
 
@@ -14,8 +15,12 @@ interface ISessionState {
 
 const useSessionStore = create<ISessionState>(set => ({
   user: undefined,
-  isAuthenticated: () => !!localStorage?.getItem('AUTH_TOKEN'),
+  isAuthenticated: () =>
+    typeof window !== 'undefined'
+      ? !!localStorage?.getItem('AUTH_TOKEN')
+      : false,
   refresh: async () => {
+    if (typeof window === 'undefined') return;
     try {
       const token = localStorage?.getItem('AUTH_TOKEN') || '';
       const { user } = await MODULES.APPLICATION.CONTROLLER.AUTH().decode({
@@ -23,6 +28,10 @@ const useSessionStore = create<ISessionState>(set => ({
       });
 
       set({ user });
+      GlobalSession.user = user;
+
+      toast.dismiss();
+      toast.success('Welcome back! 🙂');
     } catch (e) {
       set({ user: undefined });
       toast.dismiss();

@@ -13,6 +13,11 @@ export const GATEWAY_FACTORY = {
         GATEWAY_MODULE.get<AxiosHttpAuthGateway>(
           GATEWAY_REGISTRY.HTTP.AXIOS.AUTH,
         ),
+
+      TUTORIAL: () =>
+        GATEWAY_MODULE.get<AxiosHttpAuthGateway>(
+          GATEWAY_REGISTRY.HTTP.AXIOS.TUTORIAL,
+        ),
     },
   },
 };

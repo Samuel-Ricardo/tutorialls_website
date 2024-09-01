@@ -6,4 +6,7 @@ export interface IFormFieldProps {
   hook?: any;
   error?: string;
   label?: ILazyParagraphProps;
+  value?: string;
+  defaultValue?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }

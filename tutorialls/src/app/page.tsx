@@ -4,8 +4,8 @@ import { LazyImage } from '@/component/lazy/image.component';
 
 export default function Home() {
   return (
-    <main className="flex flex-col min-h-screen min-w-screen bg-[#171717] justify-center items-center">
-      <h1 className="text-[#73eb12] text-6xl font-bold text-center mb-24">
+    <main className="flex flex-col min-h-screen min-w-screen bg-[#111101] justify-center items-center p-4">
+      <h1 className="text-[#73eb12] text-5xl font-bold text-center mb-24 ">
         <LazyParagraph id="home_welcome" defaultValue="WELCOME TO TUTORIALLS" />
       </h1>
 

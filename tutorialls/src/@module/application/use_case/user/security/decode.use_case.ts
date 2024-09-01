@@ -17,7 +17,8 @@ export class DecodeUserUseCase implements IDecodeUserUseCase {
   private readonly secret!: string;
 
   async execute({ token }: IDecodeUserDTO): Promise<IUserDTO> {
-    const result = this.engine.verify(token, this.secret) as JwtPayload;
+    const result = this.engine.decode(token) as any;
+    if (!result) throw new Error('Invalid token');
 
     return {
       id: result.id,

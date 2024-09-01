@@ -17,7 +17,7 @@ export const useAuth = () => {
       await toast.promise(MODULE.login(DTO), {
         loading: `Authenticating... 🛂`,
         success: `Logged in! 🎉`,
-        error: `Authentication failed! ❌`,
+        error: `Login failed, review your credentials! ❌`,
       }),
   });
 
