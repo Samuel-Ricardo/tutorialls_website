@@ -6,7 +6,7 @@ import { ILoginForm } from '@/validation/zod/form/login.schema';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { loginFormSchema } from '@/validation/zod/form/login.schema';
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useAuth } from '@/hook/auth/login.hook';
 import { FormField } from './field/field.component';
 import { Button } from '../button/button.component';
@@ -35,8 +35,10 @@ export const LoginForm = () => {
   );
 
   const { refresh, isAuthenticated } = useSessionStore();
-  refresh();
-  if (isAuthenticated()) router.push('/tutorials');
+  useEffect(() => {
+    refresh();
+    if (isAuthenticated()) router.push('/tutorials');
+  }, [refresh, isAuthenticated, router]);
 
   return (
     <form onSubmit={submit()} className="flex flex-col gap-4 my-10">

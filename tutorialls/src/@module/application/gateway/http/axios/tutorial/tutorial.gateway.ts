@@ -101,10 +101,14 @@ export class AxiosHttpTutorialGateway implements ITutorialGateway {
     } as IPaginationOutputDTO<Tutorial>;
   }
 
-  async findByKeywordInContent({ keyword }: IFilterTutorialsByContentDTO) {
+  async findByKeywordInContent({
+    keyword,
+    limit,
+    page,
+  }: IFilterTutorialsByContentDTO) {
     const response = (
       await this.engine.get(
-        `${this.api_url}/content?keyword=${keyword}`,
+        `${this.api_url}/content?keyword=${keyword}&page=${page}&limit=${limit}`,
         this.header,
       )
     ).data as IPaginationOutputDTO<ITutorialDTO>;

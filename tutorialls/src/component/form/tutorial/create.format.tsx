@@ -14,10 +14,12 @@ import {
   ICreateTutorialForm,
 } from '@/validation/zod/form/card/create.schema';
 import { FormTextArea } from '../field/text_area.component';
+import { useRouter } from 'next/navigation';
 
 export const CreateTutorialForm = () => {
   const { createAsync, error } = useTutorialCreation();
   const { closeModal } = useCreateTutorialModalStore();
+  const { refresh } = useRouter();
 
   const {
     register,
@@ -31,9 +33,12 @@ export const CreateTutorialForm = () => {
     () =>
       handleSubmit(async data => {
         await createAsync(data);
-        if (!error) closeModal();
+        if (!error) {
+          refresh();
+          closeModal();
+        }
       }),
-    [handleSubmit, createAsync, closeModal, error],
+    [handleSubmit, createAsync, closeModal, error, refresh],
   );
 
   return (

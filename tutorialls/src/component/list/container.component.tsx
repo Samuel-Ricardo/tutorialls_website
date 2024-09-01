@@ -3,7 +3,7 @@ import { TutorialCard } from '../card/tutorial.card';
 
 export const ListTutorialContainer = ({ data }: { data: ITutorialDTO[] }) => {
   return (
-    <ul className="flex flex-col gap-4 p-5 my-10">
+    <ul className="flex flex-col gap-8 p-5 my-10">
       {data.map(tutorial => (
         <li key={tutorial.id}>
           <TutorialCard data={tutorial} />

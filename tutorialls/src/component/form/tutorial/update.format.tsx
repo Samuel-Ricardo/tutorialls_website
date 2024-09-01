@@ -15,6 +15,7 @@ import {
 } from '@/validation/zod/form/card/create.schema';
 import { ITutorialDTO } from '@/@module/domain/DTO/tutorial/tutorial.dto';
 import { FormTextArea } from '../field/text_area.component';
+import { useRouter } from 'next/navigation';
 
 export const UpdateTutorialForm = ({
   tutorial,
@@ -23,6 +24,7 @@ export const UpdateTutorialForm = ({
 }) => {
   const { updateAsync, error } = useTutorialUpdate();
   const { closeModal } = useCreateTutorialModalStore();
+  const { refresh } = useRouter();
 
   const {
     register,
@@ -36,9 +38,12 @@ export const UpdateTutorialForm = ({
     () =>
       handleSubmit(async data => {
         await updateAsync({ id: tutorial?.id, ...data });
-        if (!error) closeModal();
+        if (!error) {
+          refresh();
+          closeModal();
+        }
       }),
-    [handleSubmit, updateAsync, closeModal, error, tutorial?.id],
+    [handleSubmit, updateAsync, closeModal, error, tutorial?.id, refresh],
   );
 
   return (
