@@ -5,6 +5,7 @@ export const GATEWAY_REGISTRY = {
   HTTP: {
     AXIOS: {
       AUTH: Symbol.for('MODULE::APP::GATEWAY::HTTP::AXIOS::AUTH'),
+      TUTORIAL: Symbol.for('MODULE::APP::GATEWAY::HTTP::AXIOS::TUTORIAL'),
     },
   },
 };
