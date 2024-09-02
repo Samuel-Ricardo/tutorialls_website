@@ -30,6 +30,8 @@ export class AxiosHttpTutorialGateway implements ITutorialGateway {
     },
   };
 
+  constructor() {}
+
   async create(tutorial: ICreateTutorialDTO) {
     const response = await this.engine.post<ITutorialDTO>(
       `${this.api_url}`,
