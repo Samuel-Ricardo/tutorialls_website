@@ -151,3 +151,107 @@ This is a full stack tutorial platform that allows you to consume tutorials and 
 📡 | Hosted on Vercel: [https://tutorialls-website.vercel.app/](https://tutorialls-website.vercel.app/)
 
 <br>
+
+<h2 id="run-project"> 
+   👨‍💻 | How to use
+</h2>
+
+<br>
+
+### Open your Git Terminal and clone this repository
+
+```git
+  $ git clone "git@github.com:Samuel-Ricardo/tutorialls_website.git"
+```
+
+### Make Pull
+
+```git
+  $ git pull "git@github.com:Samuel-Ricardo/tutorialls_website.git"
+```
+
+<br>
+
+This application use `Docker` so you dont need to install and cofigurate anything other than docker on your machine.
+
+> <a target="_blank" href="https://www.docker.com/"> <img width="48px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-plain-wordmark.svg" /> </a>
+
+<br>
+
+- Navigate to project folder `$ cd ./tutorialls/` 
+
+<br>
+
+- Create a `.env` & `.env.local` files based on .env.*.example files
+
+- Now run it using `docker-compose`
+
+```bash
+
+  # After setup docker environment just run this commmand on root project folder:
+
+  $ docker-compose up --build   # For First Time run this command
+
+  $ docker-compose up           # to run project
+
+
+```
+
+```bash
+
+  #Apps Running on:
+
+  $ SITE: http://localhost:3000
+  $ API: http://localhost:3001
+
+  $ POSTGRESQL: http://localhost:27017 | [DATABASE]
+  $ PGADMIN: http://localhost:5050/    | [DB DASHBOARD]
+
+  $ RABBITMQ: http://localhost:15672/  | [MQ DASHBOARD]
+  $ REDIS: 6379                        | [CACHE] 
+
+  See more: ./tutorialls/docker-compose.yaml
+
+```
+
+<br>
+
+You also can use the Docker Image:
+
+```docker
+$ docker pull ghcr.io/samuel-ricardo/tutorialls_website:main
+```
+
+```Dockerfile
+$ FROM ghcr.io/samuel-ricardo/tutorialls_website:main
+
+```
+
+#
+
+<br>
+
+<h2 id="author">
+  :octocat: | Author:  
+</h2>
+
+> <a target="_blank" href="https://www.linkedin.com/in/samuel-ricardo/"> <img width="350px" src="https://github.com/Samuel-Ricardo/bolao-da-copa/blob/main/readme_files/IMG_20220904_220148_188.jpg?raw=true"/> <br> <p> <b> - Samuel Ricardo</b> </p></a>
+
+<h1>
+  <a herf='https://github.com/Samuel-Ricardo'>
+    <img src='https://img.shields.io/static/v1?label=&message=Samuel%20Ricardo&color=black&style=for-the-badge&logo=GITHUB'> 
+  </a>
+  
+  <a herf='https://www.instagram.com/samuel_ricardo.ex/'>
+    <img src='https://img.shields.io/static/v1?label=&message=Samuel.ex&color=black&style=for-the-badge&logo=instagram'> 
+  </a>
+  
+  <a herf='https://twitter.com/SamuelR84144340'>
+    <img src='https://img.shields.io/static/v1?label=&message=Samuel%20Ricardo&color=black&style=for-the-badge&logo=twitter'> 
+  </a>
+  
+   <a herf='https://www.linkedin.com/in/samuel-ricardo/'>
+    <img src='https://img.shields.io/static/v1?label=&message=Samuel%20Ricardo&color=black&style=for-the-badge&logo=LinkedIn'> 
+  </a>
+</h1>
+
