@@ -1,0 +1,21 @@
+# Ignorar todos os arquivos de teste
+**/*.test.js
+**/*.test.ts
+**/*.spec.js
+**/*.spec.ts
+
+# Ignorar a pasta build
+.next/
+
+# Ignorar node_modules (já é ignorado por padrão)
+node_modules/
+
+# Ignorar arquivos de configuração específicos
+**/config/**
+
+# Ignorar arquivos na pasta utils
+src/utils/**
+
+# Ignorar um arquivo específico
+src/someFileToIgnore.js
+

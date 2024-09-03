@@ -5,5 +5,8 @@
   },
   "devDependencies": {
     "husky": "^9.1.5"
+  },
+  "dependencies": {
+    "jest-mock-extended": "^3.0.7"
   }
 }
