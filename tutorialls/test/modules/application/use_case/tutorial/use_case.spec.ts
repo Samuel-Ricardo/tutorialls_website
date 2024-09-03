@@ -1,4 +1,9 @@
+/*
+ * @jest-environment node
+ */
+
 import 'reflect-metadata';
+
 import { CreateTutorialUseCase } from '@/@module/application/use_case/tutorial/create.use_case';
 import { ICreateTutorialDTO } from '@/@module/domain/DTO/tutorial/create.dto';
 import { DeleteTutorialUseCase } from '@/@module/application/use_case/tutorial/delete.use_case';
