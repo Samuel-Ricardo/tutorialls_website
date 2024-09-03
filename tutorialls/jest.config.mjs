@@ -22,6 +22,7 @@ const config = {
     '^@/(.*)$': '<rootDir>/src/$1',
     '^@test/(.*)$': '<rootDir>/test/$1',
   },
+  preset: 'ts-jest',
 };
 
 /*

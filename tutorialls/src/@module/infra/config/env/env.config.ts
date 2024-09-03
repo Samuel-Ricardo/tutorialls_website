@@ -1,3 +1,6 @@
+import * as dotenv from 'dotenv';
+dotenv.config({ path: ['.env.local', '.env'] });
+
 export const ENV = {
   ...process.env,
   API: {
